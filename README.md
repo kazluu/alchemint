@@ -1,18 +1,14 @@
 # Alchemint
 
-To start your Phoenix server:
+This is the start of a cashu mint. 
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+DO NOT USE IN PRODUCTION!
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+The key generation is FLAWED! We should use Bip32, but now is just
+random bytes for each private key.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+DO NOT USE IN PRODUCTION! (yet)
 
-## Learn more
+KEYS ARE STORED IN THE DB WITHOUT ENCRYPTION!
+SO PLEASE REFRAIN FROM USING THIS IN PRODUCTION!
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix

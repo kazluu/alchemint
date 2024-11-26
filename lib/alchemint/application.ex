@@ -12,8 +12,6 @@ defmodule Alchemint.Application do
       Alchemint.Repo,
       {DNSCluster, query: Application.get_env(:alchemint, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Alchemint.PubSub},
-      # Start the Finch HTTP client for sending emails
-      {Finch, name: Alchemint.Finch},
       # Start a worker by calling: Alchemint.Worker.start_link(arg)
       # {Alchemint.Worker, arg},
       # Start to serve requests, typically the last entry
