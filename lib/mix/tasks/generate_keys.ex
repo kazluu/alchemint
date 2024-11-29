@@ -3,9 +3,7 @@ defmodule Mix.Tasks.GenerateKeys do
 
   alias Alchemint.Repo
   alias Alchemint.Key
-
-  alias Bitcoinex.Secp256k1.PrivateKey
-  alias Bitcoinex.Secp256k1.Point
+  alias Alchemint.Keysets
 
   def run(_) do
     {:ok, _} = Application.ensure_all_started(:alchemint)
@@ -25,11 +23,10 @@ defmodule Mix.Tasks.GenerateKeys do
     amount_hex_pubkeys =
       amount_privkeys
       |> Enum.map(fn {amount, privkey_hex} ->
-        {privkey_int, ""} = Integer.parse(privkey_hex, 16)
-        {:ok, privkey} = PrivateKey.new(privkey_int)
-        pubkey = PrivateKey.to_point(privkey)
-
-        {Integer.to_string(amount), Point.serialize_public_key(pubkey)}
+        {
+          Integer.to_string(amount),
+          Keysets.privkey_to_pubkey(privkey_hex)
+        }
       end)
       |> Enum.into(%{})
 

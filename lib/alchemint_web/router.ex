@@ -17,7 +17,7 @@ defmodule AlchemintWeb.Router do
   scope "/", AlchemintWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/v1/keys", KeysController, :active_keysets
   end
 
   # Other scopes may use custom stacks.
