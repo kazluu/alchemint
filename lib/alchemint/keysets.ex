@@ -11,6 +11,16 @@ defmodule Alchemint.Keysets do
     Repo.all(from(ks in Keyset, where: ks.active == true, preload: [:keys]))
   end
 
+  def list_keysets do
+    Repo.all(Keyset)
+  end
+
+  def get_keyset(keyset_id) do
+    Keyset
+    |> Repo.get_by(keyset_id: keyset_id)
+    |> Repo.preload(:keys)
+  end
+
   def privkey_to_pubkey(hex_privkey) when is_binary(hex_privkey) do
     {privkey_int, ""} = Integer.parse(hex_privkey, 16)
     {:ok, privkey} = PrivateKey.new(privkey_int)
